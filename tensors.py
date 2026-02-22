@@ -1,8 +1,14 @@
 import torch
 
-a= torch.full((2,3),3.)
-b= torch.full((5,1,3),3.)
-c= a+b
+device = torch.device("mps" if torch.backends.mps.is_available() else "cpu")
+print(f"Using device: {device}")
 
-print(a)
-print(b)
+shape = (2,3)
+
+ones = torch.ones(shape, device=device)
+zeros = torch.zeros(shape, device=device)
+random = torch.rand(shape, device=device)
+
+print(ones)
+print(ones.device)
+
